@@ -1,0 +1,46 @@
+package vehicle;
+
+/**
+ *
+ * @author user
+ */
+public class Motorcycle extends Vehicle {
+    private double engineCapacity;
+    private double topSpeed;
+
+    public Motorcycle(String vehicleNumber, String manufacturer, String model, double rentalRate, double engineCapacity) {
+        super(vehicleNumber, manufacturer, model, rentalRate);
+        this.engineCapacity = engineCapacity;
+        this.topSpeed = calculateTopSpeed();
+    }
+
+    public double getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public void setEngineCapacity(double engineCapacity) {
+        this.engineCapacity = engineCapacity;
+        this.topSpeed = calculateTopSpeed();
+    }
+
+    public double calculateTopSpeed() {
+        return engineCapacity * 50;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nEngine Capacity: " + engineCapacity + " cc" +
+                "\nTop Speed: " + topSpeed + " km/h";
+    }
+
+    @Override
+    public double calculateRentalCost(int days) {
+        if (topSpeed >= 300) {
+            return super.calculateRentalCost(days) + 150;
+        } else {
+            return super.calculateRentalCost(days);
+        }
+    }
+}
+    
