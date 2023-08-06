@@ -1,0 +1,26 @@
+package vehicle;
+
+/**
+ *
+ * @author user
+ */
+public class VehicleRentalSystem {
+   public static void main(String[] args) {
+        Vehicle[] vehicles = new Vehicle[4];
+        vehicles[0] = new Car("123AQW", "Toyota", "Camry", 100, 4);
+        vehicles[1] = new Motorcycle("456TYU", "Honda", "CBR600RR", 50, 600);
+        vehicles[2] = new Car("789UIO", "Ford", "Mustang", 120, 2);
+        vehicles[3] = new Motorcycle("101BNM", "Yamaha", "YZF-R1", 70, 1000);
+
+        int rentalDays = 5;
+
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle.toString());
+            System.out.println("Total Rental Cost for " + rentalDays + " days: RM " + vehicle.calculateRentalCost(rentalDays));
+            if (vehicle instanceof Motorcycle) {
+                System.out.println("Top Speed: " + ((Motorcycle) vehicle).calculateTopSpeed() + " km/h");
+            }
+            System.out.println("--------------------");
+        }
+    }
+}
